@@ -34,16 +34,21 @@ define Build/Configure
 	$(CP) $(PKG_BUILD_DIR)/Makefile.Linux $(PKG_BUILD_DIR)/Makefile
 endef
 
+# 修改 conffiles，只保留配置文件
 define Package/$(PKG_NAME)/conffiles
-/etc/config/3proxy
-/etc/3proxy.cfg
+/etc/config/3proxy.cfg
 endef
 
 define Package/3proxy/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/bin/3proxy $(1)/usr/bin/3proxy
-	$(CP) ./files/* $(1)/
+
+	# 复制配置文件和启动脚本
+	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_DATA) ./files/etc/config/3proxy.cfg $(1)/etc/config/
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/etc/init.d/3proxy $(1)/etc/init.d/
 endef
 
 $(eval $(call BuildPackage,3proxy))
-
