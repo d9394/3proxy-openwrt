@@ -1,17 +1,30 @@
 #!/bin/sh /etc/rc.common
 
-# init script 3proxy for openwrt
-# written by Konstantin Shevlakov <shevlakov@132lan.ru>
+USE_PROCD=1
+START=95
+STOP=5
 
-START=99
+PROG=/usr/bin/3proxy
+CONFIG_FILE=/etc/config/3proxy.cfg
 
-start(){
-        CONFIG_PROXY=$(uci -q get 3proxy.@3proxy[0].config)
-		if [ -n $CONFIG_PROXY ]; then
-			/usr/bin/3proxy $CONFIG_PROXY
-		fi
+start_service() {
+    procd_open_instance
+    procd_set_param command "$PROG" "$CONFIG_FILE"
+    procd_set_param respawn
+    procd_close_instance
 }
 
-stop(){
-        killall 3proxy
+stop_service() {
+    # 3proxy in daemon mode handles its own stopping via pid file
+    # Or, if you prefer, you can send a kill signal
+    # killall 3proxy
+    return 0
+}
+
+reload_service() {
+    # 3proxy can be reloaded by sending a HUP signal
+    # kill -HUP $(cat /var/run/3proxy.pid)
+    # Since procd is managing it, a restart is often simpler
+    stop_service
+    start_service
 }
