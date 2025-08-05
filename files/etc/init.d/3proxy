@@ -17,7 +17,7 @@ start_service() {
 stop_service() {
     # 3proxy in daemon mode handles its own stopping via pid file
     # Or, if you prefer, you can send a kill signal
-    # killall 3proxy
+    killall 3proxy
     return 0
 }
 
