@@ -23,8 +23,8 @@ There is only one executable "/usr/bin/3proxy".
 ```bash
 # Using the SDK to cross compile packages
 cd openwrt
-git clone --depth 1 https://github.com/osnosn/3proxy-openwrt.git package/3proxy 
-#git clone -b v0.9.4-20231011 --depth 1 https://github.com/osnosn/3proxy-openwrt.git package/3proxy 
+git clone --depth 1 https://github.com/d9394/3proxy-openwrt.git package/3proxy 
+#git clone -b v0.9.4-20231011 --depth 1 https://github.com/d9394/3proxy-openwrt.git package/3proxy 
 rm -rf tmp/
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -37,9 +37,9 @@ OR
 ```bash
 # Using the SDK to cross compile packages
 cd openwrt
-git clone https://github.com/osnosn/3proxy-openwrt.git package/3proxy 
+git clone https://github.com/d9394/3proxy-openwrt.git package/3proxy 
 # OR
-#git clone https://github.com/osnosn/3proxy-openwrt.git feeds/packages/net/3proxy
+#git clone https://github.com/d9394/3proxy-openwrt.git feeds/packages/net/3proxy
 cd  package/3proxy
 #git checkout v0.9-devel
 #git checkout v0.8.13
