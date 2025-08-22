@@ -20,6 +20,9 @@ There is only one executable "/usr/bin/3proxy".
 编译/Compile
 ---
 
+* 3proxy的使用方法及参数     
+* https://github.com/3proxy/3proxy/wiki     
+
 ```bash
 # Using the SDK to cross compile packages
 cd openwrt
