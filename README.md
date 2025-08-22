@@ -17,7 +17,7 @@ There is only one executable "/usr/bin/3proxy".
 * 3proxy-0.9.4 (v0.9.4-20231011)   
 * 3proxy-0.9.5 (v0.9.5-20250506)   
      
-* 3proxy的使用方法及参数
+3proxy的使用方法及参数
 ===   
 * https://github.com/3proxy/3proxy/wiki
       
