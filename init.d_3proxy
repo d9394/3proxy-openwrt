@@ -51,11 +51,14 @@ del_policy() {
 add_owner_mark_rule() {
     iptables -t mangle -D OUTPUT -m owner --uid-owner $UID -j MARK --set-mark $FWMARK 2>/dev/null
     iptables -t mangle -A OUTPUT -m owner --uid-owner $UID -j MARK --set-mark $FWMARK
+#    iptables -t mangle -D OUTPUT -m owner --uid-owner $UID ! -d 10.147.17.0/24 -j MARK --set-mark $FWMARK 2>/dev/null
+#    iptables -t mangle -A OUTPUT -m owner --uid-owner $UID ! -d 10.147.17.0/24 -j MARK --set-mark $FWMARK
 }
 
 # 删除 owner mark 规则
 del_owner_mark_rule() {
     iptables -t mangle -D OUTPUT -m owner --uid-owner $UID -j MARK --set-mark $FWMARK 2>/dev/null
+#    iptables -t mangle -D OUTPUT -m owner --uid-owner $UID ! -d 10.147.17.0/24 -j MARK --set-mark $FWMARK 2>/dev/null
 }
 
 start() {
