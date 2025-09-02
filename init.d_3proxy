@@ -28,7 +28,7 @@ get_wan_gw() {
 
 # 清理重复 fwmark 规则
 clean_fwmark_rules() {
-    while ip rule | grep -q "fwmark $FWMARK lookup $TABLE"; do
+    while ip rule show table $TABLE | grep -q "fwmark $FWMARK"; do
         ip rule del fwmark $FWMARK table $TABLE 2>/dev/null
     done
 }
