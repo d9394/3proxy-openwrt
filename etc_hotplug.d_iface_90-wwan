@@ -1,0 +1,4 @@
+[ "$ACTION" = "ifup" ] && [ "$INTERFACE" = "wwan" ] && {
+    GW=$(ip route show dev apclix0 | awk '/default/ {print $3; exit}')
+    [ -n "$GW" ] && ip route replace default via "$GW" dev apclix0 table 201
+}
